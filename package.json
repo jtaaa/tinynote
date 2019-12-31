@@ -19,7 +19,9 @@
     "lint:ts": "concurrently \"tsc --noEmit\" \"eslint 'src/**/*.{js,ts,tsx}' --quiet --fix\"",
     "lint:css": "stylelint 'src/**/*.{js,ts,tsx}'",
     "predeploy": "CI=true concurrently \"yarn lint\" \"yarn test\"",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +39,11 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/preset-create-react-app": "^1.5.0",
+    "@storybook/react": "^5.2.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",

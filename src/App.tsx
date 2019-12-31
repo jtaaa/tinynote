@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from 'components/Box';
+import LoginButton from 'components/buttons/LoginButton';
 
 const App: React.FC = () => {
   return (
@@ -7,6 +8,7 @@ const App: React.FC = () => {
       <Box pt={[3, 5, 7]} fontSize="HL">
         Sell Your Stuff
       </Box>
+      <LoginButton />
     </div>
   );
 };

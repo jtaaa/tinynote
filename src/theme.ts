@@ -19,8 +19,21 @@ const colors = {
 //--> Space
 const space = [0, 4, 8, 16, 32, 64, 128, 256, 512];
 
+//--> FontSizes
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const fontSizes: any = [12, 14, 16, 18, 24, 32, 48, 64, 72];
+
+// aliases
+fontSizes.S = fontSizes[0];
+fontSizes.M = fontSizes[1];
+fontSizes.HS = fontSizes[2];
+fontSizes.HM = fontSizes[3];
+fontSizes.HL = fontSizes[4];
+fontSizes.HXL = fontSizes[5];
+
 export default {
   breakpoints,
   colors,
   space,
+  fontSizes,
 };

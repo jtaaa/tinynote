@@ -2,17 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ThemeDecorator from 'utils/theme/ThemeDecorator';
 
 // theme stuff
-import { ThemeProvider } from 'styled-components/macro';
-import theme from './theme';
-import GlobalStyle from 'GlobalStyle';
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
+  <ThemeDecorator>
     <App />
-  </ThemeProvider>,
+  </ThemeDecorator>,
   document.getElementById('root'),
 );
 

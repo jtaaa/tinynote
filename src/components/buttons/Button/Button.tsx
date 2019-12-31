@@ -7,7 +7,7 @@ export const Button = styled(UnstyledButton)(
     color: 'primary',
     borderRadius: 4,
     border: '1px solid',
-    '&:hover': {
+    '&:hover, &:focus': {
       bg: 'primary/light',
     },
   }),

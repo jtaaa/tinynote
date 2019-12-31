@@ -29,7 +29,9 @@ module.exports = {
           "!styled-components/macro"
         ]
       }
-    ]
+    ],
+    // Don't require explicit return types on functions
+    "@typescript-eslint/explicit-function-return-type": "off",
   },
   "settings": {
     "react": {

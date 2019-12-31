@@ -1,9 +1,10 @@
 import React from 'react';
+import Box from 'components/Box';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>Sell Your Stuff</h1>
+      <Box pt={[3, 5, 7]}>Sell Your Stuff</Box>
     </div>
   );
 };

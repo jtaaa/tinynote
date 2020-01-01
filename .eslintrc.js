@@ -32,6 +32,8 @@ module.exports = {
     ],
     // Don't require explicit return types on functions
     "@typescript-eslint/explicit-function-return-type": "off",
+    // Handle prop-types through TS instead of React prop-types
+    "react/prop-types": 'off'
   },
   "settings": {
     "react": {

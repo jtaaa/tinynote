@@ -12,12 +12,11 @@ import {
   BorderProps,
 } from 'styled-system';
 
-type UnstyledButtonProps =
-  | SpaceProps
-  | LayoutProps
-  | ColorProps
-  | TypographyProps
-  | BorderProps;
+type UnstyledButtonProps = SpaceProps &
+  LayoutProps &
+  ColorProps &
+  TypographyProps &
+  BorderProps;
 const UnstyledButton = styled.button<UnstyledButtonProps>`
   border: none;
   background: none;

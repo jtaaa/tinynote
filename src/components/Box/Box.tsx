@@ -10,7 +10,7 @@ import {
   TypographyProps,
 } from 'styled-system';
 
-type BoxProps = SpaceProps | LayoutProps | ColorProps | TypographyProps;
+type BoxProps = SpaceProps & LayoutProps & ColorProps & TypographyProps;
 const Box = styled.div<BoxProps>`
   ${space}
   ${layout}

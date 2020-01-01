@@ -15,7 +15,9 @@ const colors = {
   blue: '#007ce0',
   navy: '#004175',
   primary: '#ce1126',
-  'primary/light': '#ffddd7',
+  'primary/light': '#FAE9EB',
+  secondary: '#303036',
+  'secondary/light': '#ececec',
 };
 
 //--> Space

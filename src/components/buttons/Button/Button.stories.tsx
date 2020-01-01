@@ -7,7 +7,7 @@ export const MOCK_TEXT = {
   secondary: 'Secondary',
 };
 
-export default { title: 'Button', excludeStories: /mock.*/i };
+export default { title: 'Buttons|Button', excludeStories: /mock.*/i };
 
 export const Base = () => {
   return <Button>{MOCK_TEXT.base}</Button>;

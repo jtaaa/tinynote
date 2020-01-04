@@ -12,6 +12,8 @@ import {
   BorderProps,
   shadow,
   ShadowProps,
+  flexbox,
+  FlexboxProps,
 } from 'styled-system';
 
 type BoxProps = SpaceProps &
@@ -19,7 +21,8 @@ type BoxProps = SpaceProps &
   ColorProps &
   TypographyProps &
   BorderProps &
-  ShadowProps;
+  ShadowProps &
+  FlexboxProps;
 const Box = styled.div<BoxProps>`
   ${space}
   ${layout}
@@ -27,6 +30,7 @@ const Box = styled.div<BoxProps>`
   ${typography}
   ${border}
   ${shadow}
+  ${flexbox}
 `;
 
 export default Box;

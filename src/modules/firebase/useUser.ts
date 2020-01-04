@@ -14,7 +14,7 @@ export const useUser = () => {
     return () => {
       unregisterAuthObserver();
     };
-  }, []);
+  }, [firebase.auth]);
 
   return user;
 };

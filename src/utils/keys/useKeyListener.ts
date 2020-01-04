@@ -20,13 +20,13 @@ export const useKeyListener = (
     () => () => {
       document.removeEventListener('keydown', onKeyDown, false);
     },
-    [],
+    [onKeyDown],
   );
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown, false);
     return removeKeyListener;
-  }, []);
+  }, [onKeyDown, removeKeyListener]);
 
   return removeKeyListener;
 };

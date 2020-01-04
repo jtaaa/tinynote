@@ -11,7 +11,7 @@ import { useTranslation } from 'utils/i18next';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import uiConfig from './uiConfig';
 
-const LoginButton = () => {
+const LoginButton: React.FC = () => {
   const { Trans } = useTranslation('LoginButton');
   const [overlayVisible, setOverlayVisible] = useState(false);
   const auth = useAuth();
@@ -24,11 +24,17 @@ const LoginButton = () => {
       <Overlay visible={overlayVisible} setVisible={setOverlayVisible}>
         <Centered>
           <Box width={[1, 400]} p={3} textAlign="center">
-            <GreatPrimer>Sign in or create an account</GreatPrimer>
+            <GreatPrimer>
+              <Trans i18nKey="signInOrCreateAccount">
+                Sign in or create an account
+              </Trans>
+            </GreatPrimer>
             <Divider />
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
             <UnstyledButton onClick={() => setOverlayVisible(false)}>
-              <em>Or continue without signing in</em>
+              <Trans i18nKey="orContinue">
+                <em>Or continue without signing in</em>
+              </Trans>
             </UnstyledButton>
           </Box>
         </Centered>

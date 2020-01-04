@@ -1,14 +1,17 @@
 import React from 'react';
-import Box from 'components/Box';
 import LoginButton from 'components/buttons/LoginButton';
+import Canon from 'components/text/Canon';
+import GreatPrimer from 'components/text/GreatPrimer';
+import { useUser } from 'modules/firebase';
 
 const App: React.FC = () => {
+  const user = useUser();
+
   return (
     <div className="App">
-      <Box pt={[3, 5, 7]} fontSize="HL">
-        Sell Your Stuff
-      </Box>
+      <Canon>Sell Your Stuff</Canon>
       <LoginButton />
+      {user && <GreatPrimer>Welcome, {user?.email}</GreatPrimer>}
     </div>
   );
 };

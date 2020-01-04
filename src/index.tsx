@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeDecorator } from 'utils/theme';
+import { FirebaseContext, firebase } from 'modules/firebase';
 
 // theme stuff
 
 ReactDOM.render(
-  <ThemeDecorator>
-    <App />
-  </ThemeDecorator>,
+  <FirebaseContext.Provider value={firebase}>
+    <ThemeDecorator>
+      <App />
+    </ThemeDecorator>
+  </FirebaseContext.Provider>,
   document.getElementById('root'),
 );
 

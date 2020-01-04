@@ -4,6 +4,7 @@ import Centered from 'components/Centered';
 import Box from 'components/Box';
 import Divider from 'components/Divider';
 import Button from 'components/buttons/Button';
+import UnstyledButton from 'components/buttons/UnstyledButton';
 import GreatPrimer from 'components/text/GreatPrimer';
 import { useAuth } from 'modules/firebase';
 import { useTranslation } from 'utils/i18next';
@@ -22,12 +23,13 @@ const LoginButton = () => {
       </Button>
       <Overlay visible={overlayVisible} setVisible={setOverlayVisible}>
         <Centered>
-          <Box width={[1, 400]} p={3}>
-            <GreatPrimer textAlign="center">
-              Sign in or create an account
-            </GreatPrimer>
+          <Box width={[1, 400]} p={3} textAlign="center">
+            <GreatPrimer>Sign in or create an account</GreatPrimer>
             <Divider />
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+            <UnstyledButton onClick={() => setOverlayVisible(false)}>
+              <em>Or continue without signing in</em>
+            </UnstyledButton>
           </Box>
         </Centered>
       </Overlay>

@@ -12,7 +12,7 @@ export const Button = styled(UnstyledButton)<ButtonProps>(
     border: '1px solid',
     color: 'primary',
     '&:hover, &:focus': {
-      bg: 'primary/light',
+      backgroundColor: 'primary/light',
     },
   }),
   variant({

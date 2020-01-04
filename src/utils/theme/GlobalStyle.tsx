@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
   [type='button'],
   [type='reset'],
   [type='submit'] {
-    -webkit-appearance: button;
+    appearance: button;
   }
 
 /**

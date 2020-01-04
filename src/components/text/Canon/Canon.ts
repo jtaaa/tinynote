@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro';
 import Box from 'components/Box';
 
-const Canon = styled(Box)``;
+const Canon = Box;
 
 Canon.defaultProps = {
   fontSize: [6, 7, 8],

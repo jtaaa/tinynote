@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro';
 import Box from 'components/Box';
 
-const Trafalgar = styled(Box)``;
+const Trafalgar = Box;
 
 Trafalgar.defaultProps = {
   fontSize: [5, 6, 7],

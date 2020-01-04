@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro';
 import Box from 'components/Box';
 
-const GreatPrimer = styled(Box)``;
+const GreatPrimer = Box;
 
 GreatPrimer.defaultProps = {
   fontSize: [3, 4, 5],

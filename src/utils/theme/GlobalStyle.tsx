@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components/macro';
 
 const GlobalStyle = createGlobalStyle`
-  //--> Button Normalization
-  /**
-   * 1. Change the font styles in all browsers.
-   * 2. Remove the margin in Firefox and Safari.
-   */
+/* Button Normalization */
+/**
+  * 1. Change the font styles in all browsers.
+  * 2. Remove the margin in Firefox and Safari.
+  */
 
   button,
   input,
@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  /**
+/**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     overflow: visible;
   }
 
-  /**
+/**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
     text-transform: none;
   }
 
-  /**
+/**
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
@@ -50,6 +50,13 @@ const GlobalStyle = createGlobalStyle`
   [type='reset'],
   [type='submit'] {
     -webkit-appearance: button;
+  }
+
+/**
+ * Make everything box-sizing: border-box
+ */
+  * {
+    box-sizing: border-box;
   }
 `;
 

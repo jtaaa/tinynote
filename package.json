@@ -21,7 +21,7 @@
     "lint": "concurrently \"yarn lint:ts\" \"yarn lint:css\"",
     "lint:ts": "concurrently \"tsc --noEmit\" \"eslint 'src/**/*.{js,ts,tsx}' --quiet --fix\"",
     "lint:css": "stylelint 'src/**/*.{js,ts,tsx}'",
-    "predeploy": "CI=true concurrently \"yarn lint\" \"yarn test\"",
+    "predeploy": "CI=true concurrently \"yarn lint\" \"yarn test\" \"yarn build\"",
     "deploy": "firebase deploy",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"

@@ -11,8 +11,8 @@ import { useTranslation } from 'utils/i18next';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import uiConfig from './uiConfig';
 
-const LoginButton: React.FC = () => {
-  const { Trans } = useTranslation('LoginButton');
+const AuthButton: React.FC = () => {
+  const { Trans } = useTranslation('AuthButton');
   const [overlayVisible, setOverlayVisible] = useState(false);
   const auth = useAuth();
   const user = useUser();
@@ -56,4 +56,4 @@ const LoginButton: React.FC = () => {
   );
 };
 
-export default LoginButton;
+export default AuthButton;

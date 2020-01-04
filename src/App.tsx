@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginButton from 'components/buttons/LoginButton';
+import AuthButton from 'components/buttons/AuthButton';
 import Canon from 'components/text/Canon';
 import GreatPrimer from 'components/text/GreatPrimer';
 import { useUser } from 'modules/firebase';
@@ -10,7 +10,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Canon>Sell Your Stuff</Canon>
-      <LoginButton />
+      <AuthButton />
       {user && <GreatPrimer>Welcome, {user?.email}</GreatPrimer>}
     </div>
   );

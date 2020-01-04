@@ -35,9 +35,41 @@ fontSizes.HM = fontSizes[3];
 fontSizes.HL = fontSizes[4];
 fontSizes.HXL = fontSizes[5];
 
+//--> LineHeight
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const lineHeights: any = [
+  '16px',
+  '18px',
+  '20px',
+  '22px',
+  '28px',
+  '36px',
+  '52px',
+  '68px',
+  '76px',
+];
+
+// aliases
+lineHeights.S = lineHeights[0];
+lineHeights.M = lineHeights[1];
+lineHeights.HS = lineHeights[2];
+lineHeights.HM = lineHeights[3];
+lineHeights.HL = lineHeights[4];
+lineHeights.HXL = lineHeights[5];
+
+//--> Shadows
+const shadows = {
+  light:
+    '0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)',
+  medium: '0px 0px 5px 0px rgba(0,0,0,0.75)',
+  heavy: '0px 0px 5px 0px rgba(0,0,0,0.75)',
+};
+
 export default {
   breakpoints,
   colors,
   space,
   fontSizes,
+  shadows,
+  lineHeights,
 };

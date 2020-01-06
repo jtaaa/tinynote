@@ -1,6 +1,7 @@
+import styled from 'styled-components/macro';
 import Box from 'components/Box';
 
-const DoublePica = Box;
+const DoublePica = styled(Box)``;
 
 DoublePica.defaultProps = {
   fontSize: [4, 5, 6],

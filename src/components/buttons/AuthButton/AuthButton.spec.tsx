@@ -1,11 +1,20 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  wait,
+  waitForElement,
+} from '@testing-library/react';
 import { Base } from './AuthButton.stories';
 import { KEYS } from 'utils/keys';
+
 jest.mock('react-firebaseui/StyledFirebaseAuth');
+jest.mock('modules/firebase/useUser');
+import { useUser } from 'modules/firebase/useUser';
+const useUserMock = useUser as jest.Mock;
 
 describe('<AuthButton />', () => {
-  it('should do that', async () => {
+  it('should open and close on button press', async () => {
     const { queryByText, getByText } = render(<Base />);
 
     const button = getByText('Sign in');
@@ -29,5 +38,14 @@ describe('<AuthButton />', () => {
      * it. Waiting here to avoid the act(() => {}) error message.
      */
     await wait();
+  });
+
+  it('should display sign out when already signed in', async () => {
+    useUserMock.mockReturnValue({
+      /* This just needs to be truthy*/
+    });
+    const { queryByText } = render(<Base />);
+
+    await waitForElement(() => queryByText('Sign out'));
   });
 });

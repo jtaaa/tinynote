@@ -18,7 +18,7 @@ describe('<Overlay />', () => {
     fireEvent.click(getByText(/open/i));
     expect(queryByText(MOCK_TEXT.toggleable)).toBeInTheDocument();
 
-    fireEvent.keyDown(document, { keyCode: KEYS['ESCAPE_KEY'] });
+    fireEvent.keyDown(document, { keyCode: KEYS.ESCAPE_KEY });
     expect(queryByText(MOCK_TEXT.toggleable)).not.toBeInTheDocument();
   });
 });

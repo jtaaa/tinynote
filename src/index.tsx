@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeDecorator } from 'utils/theme';
 import { FirebaseContext, firebase } from 'modules/firebase';
+import Routes from 'Routes';
+import { BrowserRouter } from 'react-router-dom';
 
 // theme stuff
 
 ReactDOM.render(
   <FirebaseContext.Provider value={firebase}>
     <ThemeDecorator>
-      <App />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </ThemeDecorator>
   </FirebaseContext.Provider>,
   document.getElementById('root'),

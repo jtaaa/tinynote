@@ -45,8 +45,8 @@ const AuthButton: React.FC = () => {
             <Divider />
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
             <UnstyledButton onClick={() => setOverlayVisible(false)}>
-              <Trans i18nKey="orContinue">
-                <em>Or continue without signing in</em>
+              <Trans i18nKey="orContinueAsGuest">
+                <em>Or continue as a guest</em>
               </Trans>
             </UnstyledButton>
           </Box>

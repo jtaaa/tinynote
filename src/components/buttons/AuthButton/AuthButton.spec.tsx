@@ -22,9 +22,9 @@ describe('<AuthButton />', () => {
 
     fireEvent.click(button);
     expect(queryByText('Sign in or create an account')).toBeInTheDocument();
-    expect(queryByText('Or continue without signing in')).toBeInTheDocument();
+    expect(queryByText('Or continue as a guest')).toBeInTheDocument();
 
-    fireEvent.click(getByText('Or continue without signing in'));
+    fireEvent.click(getByText('Or continue as a guest'));
     expect(queryByText('Sign in or create an account')).not.toBeInTheDocument();
 
     fireEvent.click(button);

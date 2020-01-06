@@ -6,8 +6,6 @@ import { FirebaseContext, firebase } from 'modules/firebase';
 import Routes from 'Routes';
 import { BrowserRouter } from 'react-router-dom';
 
-// theme stuff
-
 ReactDOM.render(
   <FirebaseContext.Provider value={firebase}>
     <ThemeDecorator>

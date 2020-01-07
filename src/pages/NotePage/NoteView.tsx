@@ -26,7 +26,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
 
   const clearEditing = () => {
     setIsEditingTitle(false);
-    setIsEditingBody(false);
+    setIsEditingBody(tempNote.body === '');
   };
 
   const onClickTitle = () => {

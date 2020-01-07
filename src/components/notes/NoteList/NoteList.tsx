@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'utils/i18next';
 import Trafalgar from 'components/text/Trafalgar';
 import Box from 'components/Box';
-import NoteComponent from '../Note';
+import NoteCard from '../NoteCard';
 import useNotes from '../utils';
 
 const NoteList = () => {
@@ -16,7 +16,7 @@ const NoteList = () => {
       </Trafalgar>
       {notes.map(note => (
         <Box key={note.id} mt={2}>
-          <NoteComponent {...note} />
+          <NoteCard {...note} />
         </Box>
       ))}
     </Box>

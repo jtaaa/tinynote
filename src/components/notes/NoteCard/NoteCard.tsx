@@ -1,11 +1,11 @@
 import React from 'react';
 import Card from 'components/Card';
-import { Note as NoteType } from '../types';
 import DoublePica from 'components/text/DoublePica';
 import Body from 'components/text/Body';
+import { Note } from '../types';
 
-type NoteProps = NoteType;
-const Note: React.FC<NoteProps> = ({
+type NoteCardProps = Note;
+const NoteCard: React.FC<NoteCardProps> = ({
   title,
   body,
   attachments,
@@ -20,4 +20,4 @@ const Note: React.FC<NoteProps> = ({
   );
 };
 
-export default Note;
+export default NoteCard;

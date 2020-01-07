@@ -6,7 +6,7 @@ const AsyncApp = React.lazy(() => import('./App'));
 
 const Routes: React.FC = () => {
   return (
-    <Suspense fallback={Loading}>
+    <Suspense fallback={<Loading />}>
       <Switch>
         <Route path="/" component={AsyncApp} />
       </Switch>

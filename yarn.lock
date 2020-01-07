@@ -12112,6 +12112,14 @@ react@^16.8.3:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
+reactfire@^2.0.0-canary.1fce6b9:
+  version "2.0.0-canary.1fce6b9"
+  resolved "https://registry.yarnpkg.com/reactfire/-/reactfire-2.0.0-canary.1fce6b9.tgz#c3a90b0356cc5e297dc1a3a56cdbd440977594df"
+  integrity sha512-u8YKVLOH2nNEfy/2s9G4rvjOb50mCPuMCyMZEpw93lDRbmyG6oQdHXd4E+bi7+JaWpVGZzXineD1hU5LwgfEgg==
+  dependencies:
+    rxfire "^3.6.3"
+    rxjs "^6.4.0"
+
 read-pkg-up@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-2.0.0.tgz#6b72a8048984e0c41e79510fd5e9fa99b3b549be"
@@ -12687,6 +12695,13 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   integrity sha1-6Eg5bwV9Ij8kOGkkYY4laUFh7Ec=
   dependencies:
     aproba "^1.1.1"
+
+rxfire@^3.6.3:
+  version "3.9.6"
+  resolved "https://registry.yarnpkg.com/rxfire/-/rxfire-3.9.6.tgz#a0ba903a6bad905ac95feb2951d1ddfc76090da7"
+  integrity sha512-eUVRqmWDpOydtruny7tp4Rp8XSqwHmXRi4kBdnQ/aOrKezWbfJJYGfMaOEWvi1TyfPDdcAChoSJp9h5OXofpOw==
+  dependencies:
+    tslib "1.10.0"
 
 rxjs@^6.3.3, rxjs@^6.5.2:
   version "6.5.4"

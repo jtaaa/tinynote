@@ -2,17 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { ThemeDecorator } from 'utils/theme';
-import { FirebaseContext, firebase } from 'modules/firebase';
+import { FirebaseContext, firebase, firebaseConfig } from 'modules/firebase';
 import Routes from 'Routes';
 import { BrowserRouter } from 'react-router-dom';
+import { FirebaseAppProvider } from 'reactfire';
+import 'firebase/performance';
 
 ReactDOM.render(
   <FirebaseContext.Provider value={firebase}>
-    <ThemeDecorator>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </ThemeDecorator>
+    <FirebaseAppProvider firebaseConfig={firebaseConfig} initPerformance>
+      <ThemeDecorator>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </ThemeDecorator>
+    </FirebaseAppProvider>
   </FirebaseContext.Provider>,
   document.getElementById('root'),
 );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'utils/test';
-import App from './App';
+import HomeView from './HomeView';
 
 test('renders the name of the company', () => {
-  const { getByText } = render(<App />);
+  const { getByText } = render(<HomeView />);
   const linkElement = getByText('tinynote');
   expect(linkElement).toBeInTheDocument();
 });

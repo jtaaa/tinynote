@@ -1,22 +1,28 @@
 import React from 'react';
 import { useFirestoreCollectionData, useFirestore } from 'reactfire';
-import GreatPrimer from 'components/text/GreatPrimer';
+import { useTranslation } from 'utils/i18next';
+import Trafalgar from 'components/text/Trafalgar';
+import Box from 'components/Box';
+import NoteComponent from '../Note';
+import { Note } from '../types';
 
-type Note = {
-  body: string;
-  id: string;
-};
 const NoteList = () => {
+  const { Trans } = useTranslation('NoteList');
   const firestore = useFirestore();
   const notesRef = firestore().collection('notes');
   const notes = useFirestoreCollectionData<Note>(notesRef);
 
   return (
-    <div>
+    <Box p={2} pt={3}>
+      <Trafalgar>
+        <Trans i18nKey="notes">Notes</Trans>
+      </Trafalgar>
       {notes.map(note => (
-        <GreatPrimer key={note.id}>{note.body}</GreatPrimer>
+        <Box key={note.id} mt={2}>
+          <NoteComponent {...note} />
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
 

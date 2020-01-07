@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import AuthButton from 'components/buttons/AuthButton';
 import Canon from 'components/text/Canon';
 import GreatPrimer from 'components/text/GreatPrimer';
 import { useUser } from 'modules/firebase';
-import { SuspenseWithPerf } from 'reactfire';
 import Loading from 'components/Loading/Loading';
 import NoteList from 'components/notes/NoteList';
 
@@ -12,12 +11,12 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Canon>Sell Your Stuff</Canon>
+      <Canon>tinynote</Canon>
       <AuthButton />
       {user && <GreatPrimer>Welcome, {user?.email}</GreatPrimer>}
-      <SuspenseWithPerf fallback={<Loading />} traceId="load-notes-status">
+      <Suspense fallback={<Loading />}>
         <NoteList />
-      </SuspenseWithPerf>
+      </Suspense>
     </div>
   );
 };

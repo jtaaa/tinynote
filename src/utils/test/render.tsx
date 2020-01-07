@@ -1,10 +1,12 @@
-import { renderHook as renderHookImpl } from '@testing-library/react-hooks';
+import React from 'react';
+import { render as renderImpl } from '@testing-library/react';
 import { createMemoryHistory, createLocation } from 'history';
 import { CustomRenderHookOptions } from './types';
+import 'firebase/performance';
 import generateRenderWrapper from './generateRenderWrapper';
 
 const renderHook = <P, R>(
-  renderFn: (props: P) => R,
+  component: React.ReactElement,
   options: CustomRenderHookOptions<P> = {},
 ) => {
   const {
@@ -18,7 +20,7 @@ const renderHook = <P, R>(
     history.location = createLocation(pathname);
   }
 
-  const renderHookResult = renderHookImpl(renderFn, {
+  const renderHookResult = renderImpl(component, {
     wrapper: generateRenderWrapper({ history }),
     ...rest,
   });

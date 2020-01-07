@@ -5,7 +5,7 @@ import GreatPrimer from 'components/text/GreatPrimer';
 import { useUser } from 'modules/firebase';
 import { SuspenseWithPerf } from 'reactfire';
 import Loading from 'components/Loading/Loading';
-import NoteList from 'components/NoteList';
+import NoteList from 'components/notes/NoteList';
 
 const App: React.FC = () => {
   const user = useUser();

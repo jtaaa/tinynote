@@ -1,16 +1,13 @@
 import React from 'react';
-import { useFirestoreCollectionData, useFirestore } from 'reactfire';
 import { useTranslation } from 'utils/i18next';
 import Trafalgar from 'components/text/Trafalgar';
 import Box from 'components/Box';
 import NoteComponent from '../Note';
-import { Note } from '../types';
+import useNotes from '../utils';
 
 const NoteList = () => {
   const { Trans } = useTranslation('NoteList');
-  const firestore = useFirestore();
-  const notesRef = firestore().collection('notes');
-  const notes = useFirestoreCollectionData<Note>(notesRef);
+  const { notes } = useNotes();
 
   return (
     <Box p={2} pt={3}>

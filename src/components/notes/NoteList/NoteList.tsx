@@ -1,14 +1,25 @@
 import React from 'react';
-import Trafalgar from 'components/text/Trafalgar';
 import Box from 'components/Box';
 import UnstyledLink from 'components/UnstyledLink';
-import { useNotes } from 'modules/notes';
+import Centered from 'components/Centered';
+import Card from 'components/Card';
+import Trafalgar from 'components/text/Trafalgar';
+import DoublePica from 'components/text/DoublePica';
 import { useTranslation } from 'utils/i18next';
+import { useNotes } from 'modules/notes';
 import NoteCard from '../NoteCard';
 
 const NoteList = () => {
   const { Trans } = useTranslation('NoteList');
-  const { notes } = useNotes();
+  const { notes, addNote } = useNotes();
+
+  const createNewNote = async () => {
+    await addNote({
+      title: 'New note',
+      body: '',
+      attachments: [],
+    });
+  };
 
   return (
     <Box p={2} pt={3}>
@@ -22,6 +33,15 @@ const NoteList = () => {
           </UnstyledLink>
         </Box>
       ))}
+      <Card mt={2} onClick={createNewNote}>
+        <Centered>
+          <DoublePica>
+            <Trans i18nKey="newNote">
+              <em>Add a new note.</em>
+            </Trans>
+          </DoublePica>
+        </Centered>
+      </Card>
     </Box>
   );
 };

@@ -3,6 +3,7 @@ import Canon from './Canon';
 import Trafalgar from './Trafalgar';
 import DoublePica from './DoublePica';
 import GreatPrimer from './GreatPrimer';
+import Body from './Body';
 
 export default { title: 'text|All' };
 
@@ -16,6 +17,7 @@ export const AllStyles = () => {
       <Trafalgar>{MOCK_TEXT}</Trafalgar>
       <DoublePica>{MOCK_TEXT}</DoublePica>
       <GreatPrimer>{MOCK_TEXT}</GreatPrimer>
+      <Body>{MOCK_TEXT}</Body>
     </>
   );
 };

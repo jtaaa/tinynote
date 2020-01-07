@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'components/Card';
 import DoublePica from 'components/text/DoublePica';
 import Body from 'components/text/Body';
-import { Note } from '../types';
+import { Note } from 'modules/notes';
 
 type NoteCardProps = Note;
 const NoteCard: React.FC<NoteCardProps> = ({

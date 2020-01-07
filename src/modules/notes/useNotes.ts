@@ -1,6 +1,6 @@
 import { useUser } from 'modules/firebase';
 import { useFirestore, useFirestoreCollectionData } from 'reactfire';
-import { Note, NoteData } from '../types';
+import { Note, NoteData } from './types';
 
 const useNotes = () => {
   const user = useUser();

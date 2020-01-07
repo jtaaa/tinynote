@@ -1,9 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'utils/i18next';
 import Trafalgar from 'components/text/Trafalgar';
 import Box from 'components/Box';
+import UnstyledLink from 'components/UnstyledLink';
+import { useNotes } from 'modules/notes';
+import { useTranslation } from 'utils/i18next';
 import NoteCard from '../NoteCard';
-import useNotes from '../utils';
 
 const NoteList = () => {
   const { Trans } = useTranslation('NoteList');
@@ -16,7 +17,9 @@ const NoteList = () => {
       </Trafalgar>
       {notes.map(note => (
         <Box key={note.id} mt={2}>
-          <NoteCard {...note} />
+          <UnstyledLink to={`/${note.id}`}>
+            <NoteCard {...note} />
+          </UnstyledLink>
         </Box>
       ))}
     </Box>

@@ -1,8 +1,16 @@
 import styled from 'styled-components/macro';
-import { layout, LayoutProps, border, BorderProps } from 'styled-system';
+import {
+  space,
+  SpaceProps,
+  layout,
+  LayoutProps,
+  border,
+  BorderProps,
+} from 'styled-system';
 
-type DividerProps = LayoutProps & BorderProps;
+type DividerProps = SpaceProps & LayoutProps & BorderProps;
 const Divider = styled.hr<DividerProps>`
+  ${space}
   ${layout}
   ${border}
 `;

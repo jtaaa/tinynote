@@ -11,9 +11,9 @@ type PageProps = {
 const Page: React.FC<PageProps> = ({ headerOptions, children }) => {
   const { Trans } = useTranslation('Page');
   return (
-    <Box>
+    <Box height="100%" display="flex" flexDirection="column">
       {headerOptions && (
-        <Box display="flex" alignItems="center" height={48}>
+        <Box display="flex" alignItems="center" height={48} p={3}>
           {headerOptions.back && (
             <Link to={headerOptions.back}>
               <Trans i18nKey="back">Back</Trans>
@@ -21,7 +21,9 @@ const Page: React.FC<PageProps> = ({ headerOptions, children }) => {
           )}
         </Box>
       )}
-      {children}
+      <Box flex={1} p={3}>
+        {children}
+      </Box>
     </Box>
   );
 };

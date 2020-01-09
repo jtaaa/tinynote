@@ -14,7 +14,7 @@ type NoteViewProps = {
   noteId: string;
 };
 const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
-  const { Trans } = useTranslation('NoteView');
+  const { Trans, t } = useTranslation('NoteView');
   const history = useHistory();
   const { note, updateNote, removeNote } = useNote(noteId);
   const [tempNote, setTempNote] = useState(note);
@@ -28,6 +28,14 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
     history.push('/');
   };
 
+  const newNoteTitlePlaceholder = t('newNote', {
+    defaultValue: 'New note',
+  });
+
+  const newNoteBodyPlaceholder = t('startNoteHere', {
+    defaultValue: 'Start your epic note here!',
+  });
+
   return (
     <Box display="flex" flexDirection="column" height="100%">
       <Trafalgar textAlign="center">
@@ -36,7 +44,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
           value={tempNote.title}
           onChange={getTitleSetter(setTempNote)}
           rows={1}
-          autoFocus
+          placeholder={newNoteTitlePlaceholder}
         />
       </Trafalgar>
       <Body mt={2} flex={1}>
@@ -44,8 +52,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
           width={1}
           value={tempNote.body}
           onChange={getBodySetter(setTempNote)}
-          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rhoncus a nisi vel congue."
-          autoFocus
+          placeholder={newNoteBodyPlaceholder}
         />
       </Body>
       <Box mt={4}>

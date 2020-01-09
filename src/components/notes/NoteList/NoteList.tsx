@@ -15,14 +15,14 @@ const NoteList = () => {
 
   const createNewNote = async () => {
     await addNote({
-      title: 'New note',
+      title: '',
       body: '',
       attachments: [],
     });
   };
 
   return (
-    <Box p={2} pt={3}>
+    <Box pt={3}>
       <Trafalgar>
         <Trans i18nKey="notes">Notes</Trans>
       </Trafalgar>

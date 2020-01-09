@@ -15,6 +15,7 @@ const TextInput = styled.textarea<TextInputProps>`
   ${typography}
   padding: 0;
   border: none;
+  height: 100%;
 
   &:focus {
     outline: none;

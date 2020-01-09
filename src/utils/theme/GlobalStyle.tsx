@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  textarea {
+    cursor: text;
+  }
+
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
@@ -57,6 +61,13 @@ const GlobalStyle = createGlobalStyle`
  */
   * {
     box-sizing: border-box;
+  }
+/**
+ * Make the html, body and root fill the screen
+ */
+  html, body, #root {
+    height: 100%;
+    margin: 0;
   }
 `;
 

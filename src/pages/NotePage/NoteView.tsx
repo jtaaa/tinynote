@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from 'components/Box';
 import Button from 'components/buttons/Button';
@@ -19,9 +19,11 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
   const { note, updateNote, removeNote } = useNote(noteId);
   const [tempNote, setTempNote] = useState(note);
 
-  const onDone = async () => {
-    await updateNote(tempNote);
-  };
+  useEffect(() => {
+    return () => {
+      updateNote(tempNote);
+    };
+  }, []);
 
   const onDelete = async () => {
     await removeNote();
@@ -59,9 +61,6 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
         <Centered>
           <Button onClick={onDelete} mr={3}>
             <Trans i18nKey="delete">Delete</Trans>
-          </Button>
-          <Button onClick={onDone} ml={3}>
-            <Trans i18nKey="done">Done</Trans>
           </Button>
         </Centered>
       </Box>

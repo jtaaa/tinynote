@@ -23,7 +23,9 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
     return () => {
       updateNote(tempNote);
     };
-  }, []);
+    // We only want to run when the component unmounts
+    // eslint-disable-next-line
+  }, [tempNote]);
 
   const onDelete = async () => {
     await removeNote();

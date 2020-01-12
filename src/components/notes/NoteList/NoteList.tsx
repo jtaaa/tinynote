@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Box from 'components/Box';
 import UnstyledLink from 'components/UnstyledLink';
 import Centered from 'components/Centered';
@@ -11,14 +12,16 @@ import NoteCard from '../NoteCard';
 
 const NoteList = () => {
   const { Trans } = useTranslation('NoteList');
+  const history = useHistory();
   const { notes, addNote } = useNotes();
 
   const createNewNote = async () => {
-    await addNote({
+    const { id } = await addNote({
       title: '',
       body: '',
       attachments: [],
     });
+    history.push(`/${id}`);
   };
 
   return (

@@ -1,8 +1,12 @@
 import { useUser } from 'modules/firebase';
 import { useFirestore, useFirestoreCollectionData } from 'reactfire';
-import { Note, NoteData } from './types';
+import { Note, NoteData, RawNote } from './types';
+import { parseRawNote } from './utils';
 
-const useNotes = () => {
+type UseNotesOptions = {
+  sorted?: boolean;
+};
+const useNotes = ({ sorted = true }: UseNotesOptions = {}) => {
   const user = useUser();
   const firestore = useFirestore();
 
@@ -10,7 +14,14 @@ const useNotes = () => {
     .collection('users')
     .doc(user?.uid ?? 'public')
     .collection('notes');
-  const notes = useFirestoreCollectionData<Note>(notesRef, { idField: 'id' });
+  const rawNotes = useFirestoreCollectionData<RawNote>(notesRef, {
+    idField: 'id',
+  });
+  const notes = sorted
+    ? rawNotes
+        .sort((a, b) => b.modifiedOn.seconds - a.modifiedOn.seconds)
+        .map(parseRawNote)
+    : rawNotes.map(parseRawNote);
 
   const addNote = async (newNote: NoteData) => {
     return await notesRef.add({

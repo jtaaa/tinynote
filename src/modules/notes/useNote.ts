@@ -3,7 +3,7 @@ import { useFirestore, useFirestoreDocData } from 'reactfire';
 import { useUser } from 'modules/firebase';
 import throttle from 'lodash/throttle';
 import { Note, RawNote } from './types';
-import { noteEqual } from './utils';
+import { noteEqual, parseRawNote } from './utils';
 
 const THROTTLE_WAIT = 5000;
 
@@ -23,11 +23,7 @@ const useNote = (
     .collection('notes')
     .doc(noteId);
   const rawNote = useFirestoreDocData<RawNote>(noteRef, { idField: 'id' });
-  const note: Note = {
-    ...rawNote,
-    modifiedOn: new Date(rawNote.modifiedOn.seconds),
-    createdOn: new Date(rawNote.createdOn.seconds),
-  };
+  const note = parseRawNote(rawNote);
 
   const removeNote = async () => {
     return await noteRef.delete();

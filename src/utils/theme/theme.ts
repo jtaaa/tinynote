@@ -17,7 +17,8 @@ const colors = {
   primary: '#ce1126',
   'primary/light': '#FAE9EB',
   secondary: '#303036',
-  'secondary/light': '#ececec',
+  'secondary/light': '#f1f1f1',
+  'secondary/mid': '#e9e9e9',
 };
 
 //--> Space

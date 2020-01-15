@@ -15,8 +15,8 @@ const useNotes = () => {
   const addNote = async (newNote: NoteData) => {
     return await notesRef.add({
       ...newNote,
-      createdOn: new Date(),
-      modifiedOn: new Date(),
+      createdOn: firestore.Timestamp.fromDate(new Date()),
+      modifiedOn: firestore.Timestamp.fromDate(new Date()),
     });
   };
 
@@ -27,7 +27,7 @@ const useNotes = () => {
   const updateNote = async (updatedNote: Note) => {
     return await notesRef.doc(updatedNote.id).update({
       ...updatedNote,
-      modifiedOn: new Date(),
+      modifiedOn: firestore.Timestamp.fromDate(new Date()),
     });
   };
 

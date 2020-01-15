@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from 'components/Box';
 import Button from 'components/buttons/Button';
@@ -16,16 +16,7 @@ type NoteViewProps = {
 const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
   const { Trans, t } = useTranslation('NoteView');
   const history = useHistory();
-  const { note, updateNote, removeNote } = useNote(noteId);
-  const [tempNote, setTempNote] = useState(note);
-
-  useEffect(() => {
-    return () => {
-      updateNote(tempNote);
-    };
-    // We only want to run when the component unmounts
-    // eslint-disable-next-line
-  }, [tempNote]);
+  const { removeNote, tempNote, setTempNote } = useNote(noteId);
 
   const onDelete = async () => {
     await removeNote();

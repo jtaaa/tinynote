@@ -12,8 +12,8 @@ export const noteEqual = (note1: Note, note2: Note) => {
 export const parseRawNote = (rawNote: RawNote) => {
   const note: Note = {
     ...rawNote,
-    modifiedOn: new Date(rawNote.modifiedOn.seconds),
-    createdOn: new Date(rawNote.createdOn.seconds),
+    modifiedOn: new Date(rawNote.modifiedOn.seconds * 1000),
+    createdOn: new Date(rawNote.createdOn.seconds * 1000),
   };
   return note;
 };

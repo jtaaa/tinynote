@@ -3,7 +3,8 @@ import Box from 'components/Box';
 
 export const TimestampContainer = styled(Box)``;
 TimestampContainer.defaultProps = {
-  m: 2,
+  display: 'flex',
+  alignItems: 'stretch',
 };
 
 export const LabelContainer = styled(Box)``;

@@ -10,8 +10,12 @@ export type NoteMetaData = {
   modifiedOn: Date;
 };
 
+export type Line = NoteMetaData & {
+  text: string;
+};
+
 export type NoteData = {
-  body: string;
+  body: Line[] | string;
   title: string;
   attachments: string[];
 };

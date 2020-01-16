@@ -1,19 +1,19 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useFirestore, useFirestoreDocData } from 'reactfire';
 import { useUser } from 'modules/firebase';
-import throttle from 'lodash/throttle';
 import { Note, RawNote } from './types';
-import { noteEqual, parseRawNote } from './utils';
-
-const THROTTLE_WAIT = 5000;
+import {
+  noteEqual,
+  parseRawNote,
+  createNewLine,
+  convertStringBodyToLines,
+} from './utils';
+import useThrottle from 'utils/useThrottle';
 
 type UseNoteOptions = {
   throttleWait?: number;
 };
-const useNote = (
-  noteId: string,
-  { throttleWait = THROTTLE_WAIT }: UseNoteOptions = {},
-) => {
+const useNote = (noteId: string, { throttleWait }: UseNoteOptions = {}) => {
   const user = useUser();
   const firestore = useFirestore();
 
@@ -44,19 +44,18 @@ const useNote = (
     [noteRef, firestore.Timestamp],
   );
 
-  const throttled = useMemo(
-    () =>
-      throttle(async () => {
-        if (!noteEqual(tempNote, note)) {
-          await updateNote(tempNote);
-        }
-      }, throttleWait),
-    [updateNote, tempNote, note, throttleWait],
+  const throttled = useThrottle(
+    async (tempNote: Note, note: Note) => {
+      if (!noteEqual(tempNote, note)) {
+        await updateNote(tempNote);
+      }
+    },
+    { wait: throttleWait },
   );
 
   useEffect(() => {
-    throttled();
-  }, [throttled]);
+    throttled.current(tempNote, note);
+  }, [tempNote, note, throttled]);
 
   const saveTempNote = useMemo(
     () => async () => {
@@ -69,7 +68,39 @@ const useNote = (
     [noteRef, tempNote, firestore.Timestamp],
   );
 
-  return { note, removeNote, updateNote, tempNote, setTempNote, saveTempNote };
+  const [newLine, setNewLine] = useState('');
+
+  const saveNewLine = useMemo(
+    () => async () => {
+      if (newLine.length !== 0) {
+        setTempNote((tempNote: Note) => {
+          let body = tempNote.body;
+          if (Array.isArray(body)) {
+            body = [...body, createNewLine(newLine)];
+          } else {
+            body = convertStringBodyToLines(tempNote.body as string);
+          }
+          return {
+            ...tempNote,
+            body,
+          };
+        });
+      }
+    },
+    [newLine],
+  );
+
+  return {
+    note,
+    removeNote,
+    updateNote,
+    tempNote,
+    setTempNote,
+    saveTempNote,
+    newLine,
+    setNewLine,
+    saveNewLine,
+  };
 };
 
 export default useNote;

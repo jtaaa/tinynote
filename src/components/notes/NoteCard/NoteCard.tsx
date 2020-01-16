@@ -19,6 +19,13 @@ const NoteCard: React.FC<NoteCardProps> = ({
 
   const modifiedOnLabel = t('modified', { defaultValue: 'M' });
 
+  let bodyCopy: React.ReactNode;
+  if (Array.isArray(body)) {
+    bodyCopy = body.map(line => <Body key={line.id}>{line.text}</Body>);
+  } else {
+    bodyCopy = <Body>{body}</Body>;
+  }
+
   return (
     <Card>
       <NoteCardHeader>
@@ -29,7 +36,7 @@ const NoteCard: React.FC<NoteCardProps> = ({
           theme={FancyTimestampTheme}
         />
       </NoteCardHeader>
-      <Body>{body}</Body>
+      <Body>{bodyCopy}</Body>
     </Card>
   );
 };

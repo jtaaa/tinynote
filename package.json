@@ -16,7 +16,8 @@
     "react-scripts": "3.3.0",
     "reactfire": "^2.0.0-canary.1fce6b9",
     "styled-components": "^4.4.1",
-    "styled-system": "^5.1.4"
+    "styled-system": "^5.1.4",
+    "uuid": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -67,6 +68,7 @@
     "@types/styled-components": "^4.4.1",
     "@types/styled-system": "^5.1.4",
     "@types/styled-system__css": "^5.0.4",
+    "@types/uuid": "^3.4.6",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "concurrently": "^5.0.2",

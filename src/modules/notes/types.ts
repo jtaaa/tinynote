@@ -10,8 +10,18 @@ export type NoteMetaData = {
   modifiedOn: Date;
 };
 
+export type RawLine = RawNoteMetaData & {
+  text: string;
+};
+
 export type Line = NoteMetaData & {
   text: string;
+};
+
+export type RawNoteData = {
+  body: RawLine[] | string;
+  title: string;
+  attachments: string[];
 };
 
 export type NoteData = {
@@ -20,5 +30,5 @@ export type NoteData = {
   attachments: string[];
 };
 
-export type RawNote = RawNoteMetaData & NoteData;
+export type RawNote = RawNoteMetaData & RawNoteData;
 export type Note = NoteMetaData & NoteData;

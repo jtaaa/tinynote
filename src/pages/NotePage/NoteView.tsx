@@ -4,12 +4,15 @@ import Box from 'components/Box';
 import Button from 'components/buttons/Button';
 import Centered from 'components/Centered';
 import TextInput from 'components/TextInput';
+import Timestamp, {
+  FancyTimestampTheme,
+  TimeTimestampTheme,
+} from 'components/Timestamp';
 import Trafalgar from 'components/text/Trafalgar';
 import Body from 'components/text/Body';
 import { useNote } from 'modules/notes';
 import { useTranslation } from 'utils/i18next';
 import { getTitleSetter, getBodySetter, getNewLineSetter } from './utils';
-import Timestamp, { FancyTimestampTheme } from 'components/Timestamp';
 import { KEYS } from 'utils/keys';
 
 type NoteViewProps = {
@@ -76,33 +79,42 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
       <Body mt={2} flex={1}>
         {Array.isArray(tempNote.body) ? (
           tempNote.body.map((line, index) => (
-            <TextInput
-              key={line.id}
-              width={1}
-              value={line.text}
-              onChange={getBodySetter(setTempNote, index)}
-              placeholder={existingLinePlaceholder}
-            />
+            <Box key={line.id} display="flex">
+              <Timestamp
+                mr={2}
+                timestamp={line.modifiedOn}
+                theme={TimeTimestampTheme}
+              />
+              <TextInput
+                flex={1}
+                value={line.text}
+                onChange={getBodySetter(setTempNote, index)}
+                placeholder={existingLinePlaceholder}
+              />
+            </Box>
           ))
         ) : (
           <TextInput
-            width={1}
+            flex={1}
             value={tempNote.body}
             onChange={getBodySetter(setTempNote, 0)}
             placeholder={newNoteBodyPlaceholder}
           />
         )}
-        <TextInput
-          width={1}
-          value={newLine}
-          onChange={getNewLineSetter(setNewLine)}
-          onKeyDown={onNewLineKeyPress}
-          placeholder={
-            isExistingNote
-              ? existingNoteBodyPlaceholder
-              : newNoteBodyPlaceholder
-          }
-        />
+        <Box display="flex">
+          <Timestamp mr={2} timestamp={new Date()} theme={TimeTimestampTheme} />
+          <TextInput
+            flex={1}
+            value={newLine}
+            onChange={getNewLineSetter(setNewLine)}
+            onKeyDown={onNewLineKeyPress}
+            placeholder={
+              isExistingNote
+                ? existingNoteBodyPlaceholder
+                : newNoteBodyPlaceholder
+            }
+          />
+        </Box>
       </Body>
       <Box mt={4}>
         <Centered>

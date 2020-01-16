@@ -9,7 +9,6 @@ TimestampContainer.defaultProps = {
 
 export const LabelContainer = styled(Box)``;
 LabelContainer.defaultProps = {
-  display: 'inline',
   p: 2,
   borderRadius: 4,
   borderTopRightRadius: 0,
@@ -19,7 +18,6 @@ LabelContainer.defaultProps = {
 
 export const TimestampCopyContainer = styled(Box)``;
 TimestampCopyContainer.defaultProps = {
-  display: 'inline',
   p: 2,
   borderRadius: 4,
   borderTopLeftRadius: 0,

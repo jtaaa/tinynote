@@ -7,6 +7,7 @@ import {
   parseRawNote,
   createNewLine,
   convertStringBodyToLines,
+  noteToRaw,
 } from './utils';
 import useThrottle from 'utils/useThrottle';
 
@@ -34,11 +35,7 @@ const useNote = (noteId: string, { throttleWait }: UseNoteOptions = {}) => {
   const updateNote = useMemo(
     () => async (updatedNote: Note) => {
       setTempNote(updatedNote);
-      const note = {
-        ...updatedNote,
-        modifiedOn: firestore.Timestamp.fromDate(new Date()),
-        createdOn: firestore.Timestamp.fromDate(updatedNote.createdOn),
-      };
+      const note = noteToRaw(updatedNote);
       return await noteRef.update(note);
     },
     [noteRef, firestore.Timestamp],
@@ -59,11 +56,7 @@ const useNote = (noteId: string, { throttleWait }: UseNoteOptions = {}) => {
 
   const saveTempNote = useMemo(
     () => async () => {
-      return await noteRef.update({
-        ...tempNote,
-        modifiedOn: firestore.Timestamp.fromDate(new Date()),
-        createdOn: firestore.Timestamp.fromDate(tempNote.createdOn),
-      });
+      return await noteRef.update(noteToRaw(tempNote));
     },
     [noteRef, tempNote, firestore.Timestamp],
   );

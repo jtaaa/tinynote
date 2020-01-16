@@ -6,13 +6,16 @@ import {
   LayoutProps,
   typography,
   TypographyProps,
+  flex,
+  FlexProps,
 } from 'styled-system';
 
-type TextInputProps = SpaceProps & LayoutProps & TypographyProps;
+type TextInputProps = SpaceProps & LayoutProps & TypographyProps & FlexProps;
 const TextInput = styled.input<TextInputProps>`
   ${space}
   ${layout}
   ${typography}
+  ${flex}
   padding: 0;
   border: none;
   cursor: text;

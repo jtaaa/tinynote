@@ -8,3 +8,5 @@ FancyTimestampContainer.defaultProps = {};
 export const fancyTimestampToCopy = (timestamp: Date) => {
   return moment(timestamp).format('MMM Do 20, h:mm:ss a');
 };
+
+export const FancyTimestampTheme = 'FancyTimestampTheme' as const;

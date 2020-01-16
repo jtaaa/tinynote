@@ -3,7 +3,7 @@ import Card from 'components/Card';
 import DoublePica from 'components/text/DoublePica';
 import Body from 'components/text/Body';
 import { Note } from 'modules/notes';
-import Timestamp from 'components/Timestamp';
+import Timestamp, { FancyTimestampTheme } from 'components/Timestamp';
 import { useTranslation } from 'utils/i18next';
 import { NoteCardHeader } from './elements';
 
@@ -26,7 +26,7 @@ const NoteCard: React.FC<NoteCardProps> = ({
         <Timestamp
           timestamp={modifiedOn}
           label={modifiedOnLabel}
-          theme="FANCY"
+          theme={FancyTimestampTheme}
         />
       </NoteCardHeader>
       <Body>{body}</Body>

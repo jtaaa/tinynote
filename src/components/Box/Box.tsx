@@ -16,7 +16,7 @@ import {
   FlexboxProps,
 } from 'styled-system';
 
-type BoxProps = SpaceProps &
+export type BoxProps = SpaceProps &
   LayoutProps &
   ColorProps &
   TypographyProps &

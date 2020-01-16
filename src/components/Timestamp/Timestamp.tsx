@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyledComponentProps } from 'styled-components/macro';
+import { BoxProps } from 'components/Box';
 import { Theme } from './types';
 import { DEFAULT_STYLES } from './utils';
 import {
@@ -13,7 +14,11 @@ import {
   fancyTimestampToCopy,
   FancyTimestampTheme,
 } from './FancyTimestamp';
-import { BoxProps } from 'components/Box';
+import {
+  TimeTimestampContainer,
+  TimeTimestampTheme,
+  timeTimestampToCopy,
+} from './TimeTimestamp';
 
 // That any is fine.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,6 +39,10 @@ const Timestamp = ({
     case FancyTimestampTheme:
       Container = FancyTimestampContainer;
       timestampCopy = fancyTimestampToCopy(timestamp);
+      break;
+    case TimeTimestampTheme:
+      Container = TimeTimestampContainer;
+      timestampCopy = timeTimestampToCopy(timestamp);
       break;
     default:
       break;

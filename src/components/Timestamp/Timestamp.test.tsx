@@ -4,7 +4,7 @@ import { LastModified, BASE_TIMESTAMP } from './Timestamp.stories';
 import { fancyTimestampToCopy } from './FancyTimestamp';
 
 describe('<Timestamp />', () => {
-  it('should do that', () => {
+  it('should display label and convert copy properly', () => {
     const { getByText } = render(<LastModified />);
 
     expect(getByText('Last modified')).toBeInTheDocument();

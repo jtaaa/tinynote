@@ -38,7 +38,7 @@ const useNote = (noteId: string, { throttleWait }: UseNoteOptions = {}) => {
       const note = noteToRaw(updatedNote);
       return await noteRef.update(note);
     },
-    [noteRef, firestore.Timestamp],
+    [noteRef],
   );
 
   const throttled = useThrottle(
@@ -58,7 +58,7 @@ const useNote = (noteId: string, { throttleWait }: UseNoteOptions = {}) => {
     () => async () => {
       return await noteRef.update(noteToRaw(tempNote));
     },
-    [noteRef, tempNote, firestore.Timestamp],
+    [noteRef, tempNote],
   );
 
   const [newLine, setNewLine] = useState('');

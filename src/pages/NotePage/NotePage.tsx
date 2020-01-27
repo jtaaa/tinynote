@@ -12,7 +12,7 @@ const NotePage: React.FC = () => {
   const noteId = useParams<Params>().noteId;
 
   return (
-    <Page headerOptions={{ back: '/' }}>
+    <Page back="/">
       <Suspense fallback={<Loading />}>
         <NoteView noteId={noteId} />
       </Suspense>

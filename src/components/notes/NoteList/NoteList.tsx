@@ -18,7 +18,7 @@ const NoteList = () => {
   const createNewNote = async () => {
     const { id } = await addNote({
       title: '',
-      body: '',
+      body: [],
       attachments: [],
     });
     history.push(`/${id}`);

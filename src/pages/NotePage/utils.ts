@@ -29,7 +29,7 @@ export const getBodySetter = (setTempNote: SetTempNote, index: number) => (
         };
       }
       // Otherwise add the changes
-      const newLine = { ...tempNote.body[index], text };
+      const newLine = { ...tempNote.body[index], modifiedOn: new Date(), text };
       const body = [
         ...tempNote.body.slice(0, index),
         newLine,

@@ -38,7 +38,7 @@ export const noteToRaw = (note: Note) => {
       ? note.body.map(line => {
           return {
             ...line,
-            modifiedOn: firestore.Timestamp.fromDate(new Date()),
+            modifiedOn: firestore.Timestamp.fromDate(line.modifiedOn),
             createdOn: firestore.Timestamp.fromDate(line.createdOn),
           };
         })

@@ -14,7 +14,7 @@ const colors = {
   white: '#fff',
   blue: '#007ce0',
   navy: '#004175',
-  primary: '#ce1126',
+  primary: '#40798C',
   'primary/light': '#FAE9EB',
   secondary: '#303036',
   'secondary/light': '#f1f1f1',

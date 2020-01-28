@@ -33,7 +33,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
   const createdOnLabel = t('createdOn', { defaultValue: 'created on' });
 
   const onDelete = async () => {
-    await removeNote();
+    removeNote();
     history.push('/');
   };
 
@@ -56,7 +56,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
   const isExistingNote =
     Array.isArray(tempNote.body) && tempNote.body.length !== 0;
 
-  const onBlur = async (e: React.FocusEvent<HTMLTextAreaElement>) => {
+  const onBlur = async () => {
     saveNewLine();
     setNewLine('');
   };

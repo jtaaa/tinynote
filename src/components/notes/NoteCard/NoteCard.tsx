@@ -21,7 +21,11 @@ const NoteCard: React.FC<NoteCardProps> = ({
 
   let bodyCopy: React.ReactNode;
   if (Array.isArray(body)) {
-    bodyCopy = body.map(line => <Body key={line.id}>{line.text}</Body>);
+    bodyCopy = body.slice(0, 2).map(line => (
+      <Body key={line.id} style={{ overflowWrap: 'break-word' }}>
+        {line.text}
+      </Body>
+    ));
   } else {
     bodyCopy = <Body>{body}</Body>;
   }

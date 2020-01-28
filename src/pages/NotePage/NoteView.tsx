@@ -13,7 +13,6 @@ import Body from 'components/text/Body';
 import { useNote } from 'modules/notes';
 import { useTranslation } from 'utils/i18next';
 import { getTitleSetter, getBodySetter, getNewLineSetter } from './utils';
-import { KEYS } from 'utils/keys';
 
 type NoteViewProps = {
   noteId: string;
@@ -57,17 +56,13 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
   const isExistingNote =
     Array.isArray(tempNote.body) && tempNote.body.length !== 0;
 
-  const onNewLineKeyPress = async (
-    e: React.KeyboardEvent<HTMLInputElement>,
-  ) => {
-    if (e.keyCode === KEYS.ENTER_KEY) {
-      saveNewLine();
-      setNewLine('');
-    }
+  const onBlur = async (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    saveNewLine();
+    setNewLine('');
   };
 
   return (
-    <Box display="flex" flexDirection="column" height="100%">
+    <Box display="flex" flexDirection="column" height="100%" p={3}>
       <Trafalgar textAlign="center">
         <TextInput
           textAlign="center"
@@ -85,7 +80,11 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
                 timestamp={line.modifiedOn}
                 theme={TimeTimestampTheme}
               />
+              <Body mr={3} lineHeight="40px">
+                ~
+              </Body>
               <TextInput
+                mt={2}
                 flex={1}
                 value={line.text}
                 onChange={getBodySetter(setTempNote, index)}
@@ -95,19 +94,24 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
           ))
         ) : (
           <TextInput
+            mt={2}
             flex={1}
             value={tempNote.body}
             onChange={getBodySetter(setTempNote, 0)}
             placeholder={newNoteBodyPlaceholder}
           />
         )}
-        <Box display="flex">
+        <Box display="flex" alignItems="center">
           <Timestamp mr={2} timestamp={new Date()} theme={TimeTimestampTheme} />
+          <Body mr={3} lineHeight="40px">
+            ~
+          </Body>
           <TextInput
+            mt={2}
             flex={1}
             value={newLine}
             onChange={getNewLineSetter(setNewLine)}
-            onKeyDown={onNewLineKeyPress}
+            onBlur={onBlur}
             placeholder={
               isExistingNote
                 ? existingNoteBodyPlaceholder

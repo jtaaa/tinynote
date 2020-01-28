@@ -16,7 +16,7 @@ const colors = {
   navy: '#004175',
   primary: '#40798C',
   'primary/light': '#FAE9EB',
-  secondary: '#303036',
+  secondary: '#1F363D',
   'secondary/light': '#f1f1f1',
   'secondary/mid': '#e9e9e9',
 };

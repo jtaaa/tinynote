@@ -5,7 +5,7 @@ type SetTempNote = (value: React.SetStateAction<Note>) => void;
 type SetNewLine = (value: React.SetStateAction<string>) => void;
 
 export const getTitleSetter = (setTempNote: SetTempNote) => (
-  e: React.ChangeEvent<HTMLInputElement>,
+  e: React.ChangeEvent<HTMLTextAreaElement>,
 ) => {
   const text = e.target.value;
   const title = text.replace(/[\n\r]/g, '');
@@ -13,7 +13,7 @@ export const getTitleSetter = (setTempNote: SetTempNote) => (
 };
 
 export const getBodySetter = (setTempNote: SetTempNote, index: number) => (
-  e: React.ChangeEvent<HTMLInputElement>,
+  e: React.ChangeEvent<HTMLTextAreaElement>,
 ) => {
   const text = e.target.value;
   return setTempNote((tempNote: Note) => {
@@ -48,7 +48,7 @@ export const getBodySetter = (setTempNote: SetTempNote, index: number) => (
 };
 
 export const getNewLineSetter = (setNewLine: SetNewLine) => (
-  e: React.ChangeEvent<HTMLInputElement>,
+  e: React.ChangeEvent<HTMLTextAreaElement>,
 ) => {
   const text = e.target.value;
   const newLine = text;

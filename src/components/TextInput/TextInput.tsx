@@ -9,9 +9,10 @@ import {
   flex,
   FlexProps,
 } from 'styled-system';
+import TextareaAutosize from 'react-autosize-textarea';
 
 type TextInputProps = SpaceProps & LayoutProps & TypographyProps & FlexProps;
-const TextInput = styled.input<TextInputProps>`
+const TextInput = styled(TextareaAutosize)<TextInputProps>`
   ${space}
   ${layout}
   ${typography}
@@ -19,6 +20,9 @@ const TextInput = styled.input<TextInputProps>`
   padding: 0;
   border: none;
   cursor: text;
+  background: none;
+  color: inherit;
+  resize: none;
 
   &:focus {
     outline: none;

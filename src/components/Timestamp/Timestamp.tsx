@@ -49,7 +49,7 @@ const Timestamp = ({
   }
   return (
     <Container {...boxProps}>
-      <LabelContainer>{label}</LabelContainer>
+      {label && <LabelContainer>{label}</LabelContainer>}
       <TimestampCopyContainer>{timestampCopy}</TimestampCopyContainer>
     </Container>
   );

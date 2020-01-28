@@ -13,7 +13,6 @@ LabelContainer.defaultProps = {
   borderRadius: 4,
   borderTopRightRadius: 0,
   borderBottomRightRadius: 0,
-  bg: 'secondary/mid',
 };
 
 export const TimestampCopyContainer = styled(Box)``;
@@ -22,5 +21,4 @@ TimestampCopyContainer.defaultProps = {
   borderRadius: 4,
   borderTopLeftRadius: 0,
   borderBottomLeftRadius: 0,
-  bg: 'secondary/light',
 };

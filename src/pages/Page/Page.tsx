@@ -7,7 +7,7 @@ type PageProps = HeaderProps & {
 };
 const Page: React.FC<PageProps> = ({ children, ...headerProps }) => {
   return (
-    <Box>
+    <Box minHeight="100%" bg="black" color="white">
       <Header {...headerProps} />
       {children}
     </Box>

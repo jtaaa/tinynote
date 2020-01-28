@@ -9,6 +9,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "^0.0.0-experimental-f42431abe",
+    "react-autosize-textarea": "^7.0.0",
     "react-dom": "^0.0.0-experimental-f42431abe",
     "react-firebaseui": "^4.0.0",
     "react-i18next": "^11.2.7",

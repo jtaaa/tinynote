@@ -1,6 +1,12 @@
 import { createGlobalStyle } from 'styled-components/macro';
 
 const GlobalStyle = createGlobalStyle`
+/**
+ * Font stuff
+ */
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+
+
 /* Button Normalization */
 /**
   * 1. Change the font styles in all browsers.

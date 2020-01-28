@@ -101,7 +101,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
             placeholder={newNoteBodyPlaceholder}
           />
         )}
-        <Box display="flex" alignItems="center">
+        <Box display="flex">
           <Timestamp mr={2} timestamp={new Date()} theme={TimeTimestampTheme} />
           <Body mr={3} lineHeight="40px">
             ~

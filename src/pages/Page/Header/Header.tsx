@@ -9,30 +9,34 @@ import { Action } from './types';
 export type HeaderProps = {
   back?: string;
   actions?: Action[];
+  extension?: React.ReactNode;
 };
-const Header: React.FC<HeaderProps> = ({ back, actions = [] }) => {
+const Header: React.FC<HeaderProps> = ({ back, actions = [], extension }) => {
   return (
-    <HeaderContainer
-      height={64}
-      p={3}
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-    >
-      <Box>
-        {back && (
-          <Link to={back}>
-            <BackIcon />
-          </Link>
-        )}
+    <HeaderContainer>
+      <Box
+        height={64}
+        p={3}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Box>
+          {back && (
+            <Link to={back}>
+              <BackIcon />
+            </Link>
+          )}
+        </Box>
+        <Box>
+          {actions.map(action => (
+            <UnstyledButton key={action.id} onClick={action.onClick}>
+              {action.icon}
+            </UnstyledButton>
+          ))}
+        </Box>
       </Box>
-      <Box>
-        {actions.map(action => (
-          <UnstyledButton key={action.id} onClick={action.onClick}>
-            {action.icon}
-          </UnstyledButton>
-        ))}
-      </Box>
+      {extension}
     </HeaderContainer>
   );
 };

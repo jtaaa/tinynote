@@ -25,7 +25,7 @@ const NoteList = () => {
   };
 
   return (
-    <Box pt={3}>
+    <Box p={3}>
       <Trafalgar>
         <Trans i18nKey="notes">Notes</Trans>
       </Trafalgar>

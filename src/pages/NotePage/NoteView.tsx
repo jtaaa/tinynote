@@ -4,15 +4,13 @@ import Box from 'components/Box';
 import Button from 'components/buttons/Button';
 import Centered from 'components/Centered';
 import TextInput from 'components/TextInput';
-import Timestamp, {
-  FancyTimestampTheme,
-  TimeTimestampTheme,
-} from 'components/Timestamp';
+import Timestamp, { FancyTimestampTheme } from 'components/Timestamp';
 import Trafalgar from 'components/text/Trafalgar';
 import Body from 'components/text/Body';
 import { useNote } from 'modules/notes';
 import { useTranslation } from 'utils/i18next';
 import { getTitleSetter, getBodySetter, getNewLineSetter } from './utils';
+import NoteLine from './NoteLine';
 
 type NoteViewProps = {
   noteId: string;
@@ -74,23 +72,13 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
       <Body mt={2} flex={1}>
         {Array.isArray(tempNote.body) ? (
           tempNote.body.map((line, index) => (
-            <Box key={line.id} display="flex">
-              <Timestamp
-                mr={2}
-                timestamp={line.modifiedOn}
-                theme={TimeTimestampTheme}
-              />
-              <Body mr={3} lineHeight="40px">
-                ~
-              </Body>
-              <TextInput
-                mt={2}
-                flex={1}
-                value={line.text}
-                onChange={getBodySetter(setTempNote, index)}
-                placeholder={existingLinePlaceholder}
-              />
-            </Box>
+            <NoteLine
+              key={line.id}
+              timestamp={line.modifiedOn}
+              text={line.text}
+              onChange={getBodySetter(setTempNote, index)}
+              placeholder={existingLinePlaceholder}
+            />
           ))
         ) : (
           <TextInput
@@ -101,27 +89,20 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
             placeholder={newNoteBodyPlaceholder}
           />
         )}
-        <Box display="flex">
-          <Timestamp mr={2} timestamp={new Date()} theme={TimeTimestampTheme} />
-          <Body mr={3} lineHeight="40px">
-            ~
-          </Body>
-          <TextInput
-            mt={2}
-            flex={1}
-            value={newLine}
-            onChange={getNewLineSetter(setNewLine)}
-            onBlur={onBlur}
-            placeholder={
-              isExistingNote
-                ? existingNoteBodyPlaceholder
-                : newNoteBodyPlaceholder
-            }
-          />
-        </Box>
+        <NoteLine
+          timestamp={new Date()}
+          text={newLine}
+          placeholder={
+            isExistingNote
+              ? existingNoteBodyPlaceholder
+              : newNoteBodyPlaceholder
+          }
+          onChange={getNewLineSetter(setNewLine)}
+          onBlur={onBlur}
+        />
       </Body>
       <Box mt={4}>
-        <Centered>
+        <Centered flexDirection={['column', 'row']} alignItems="center">
           <Timestamp
             timestamp={tempNote.modifiedOn}
             label={modifiedOnLabel}
@@ -131,9 +112,9 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
             timestamp={tempNote.createdOn}
             label={createdOnLabel}
             theme={FancyTimestampTheme}
-            ml={3}
+            ml={[0, 3]}
           />
-          <Button onClick={onDelete} ml={3}>
+          <Button onClick={onDelete} ml={[0, 3]}>
             <Trans i18nKey="delete">Delete</Trans>
           </Button>
         </Centered>

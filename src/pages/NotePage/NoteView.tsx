@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from 'components/Box';
 import Button from 'components/buttons/Button';

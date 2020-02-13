@@ -8,12 +8,13 @@ const THROTTLE_WAIT = 5000;
 
 type UseThrottleOptions = {
   wait?: number;
+  trailing?: boolean;
 };
 const useThrottle = <T>(
   func: FunctionToThrottle,
-  { wait = THROTTLE_WAIT }: UseThrottleOptions,
+  { wait = THROTTLE_WAIT, trailing = false }: UseThrottleOptions,
 ) => {
-  const throttled = useRef(throttle(func, wait));
+  const throttled = useRef(throttle(func, wait, { trailing }));
   return throttled;
 };
 

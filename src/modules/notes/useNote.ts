@@ -11,10 +11,15 @@ import {
 } from './utils';
 import useThrottle from 'utils/useThrottle';
 
+const DEFAULT_THROTTLE_WAIT = 3000;
+
 type UseNoteOptions = {
   throttleWait?: number;
 };
-const useNote = (noteId: string, { throttleWait }: UseNoteOptions = {}) => {
+const useNote = (
+  noteId: string,
+  { throttleWait = DEFAULT_THROTTLE_WAIT }: UseNoteOptions = {},
+) => {
   const user = useUser();
   const firestore = useFirestore();
 
@@ -47,7 +52,7 @@ const useNote = (noteId: string, { throttleWait }: UseNoteOptions = {}) => {
         await updateNote(tempNote);
       }
     },
-    { wait: throttleWait },
+    { wait: throttleWait, trailing: true },
   );
 
   useEffect(() => {

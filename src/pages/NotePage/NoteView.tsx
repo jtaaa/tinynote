@@ -102,7 +102,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
               <Fragment key={line.id}>
                 {addDateStamp && (
                   <Timestamp
-                    timestamp={tempNote.createdOn}
+                    timestamp={line.createdOn}
                     theme={DateTimestampTheme}
                   />
                 )}
@@ -125,7 +125,9 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
           />
         )}
         <Box ref={ref => ref?.scrollIntoView()} mb={7}>
-          <Timestamp timestamp={new Date()} theme={DateTimestampTheme} />
+          {previousCreatedOn.getDate() !== new Date().getDate() && (
+            <Timestamp timestamp={new Date()} theme={DateTimestampTheme} />
+          )}
           <NoteLine
             timestamp={new Date()}
             text={newLine}

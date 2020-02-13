@@ -11,6 +11,7 @@ import { useNote } from 'modules/notes';
 import { useTranslation } from 'utils/i18next';
 import { getTitleSetter, getBodySetter, getNewLineSetter } from './utils';
 import NoteLine from './NoteLine';
+import { useKeyListener } from 'utils/keys';
 
 type NoteViewProps = {
   noteId: string;
@@ -58,6 +59,18 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
     saveNewLine();
     setNewLine('');
   };
+
+  useKeyListener(
+    'ENTER_KEY',
+    async () => {
+      console.log('Enter key pressed');
+      saveNewLine();
+      setNewLine('');
+    },
+    {
+      preventDefault: true,
+    },
+  );
 
   return (
     <Box display="flex" flexDirection="column" height="100%" p={3}>

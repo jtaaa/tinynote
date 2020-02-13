@@ -21,9 +21,6 @@ const NoteLine: React.FC<NoteLineProps> = ({
   return (
     <Box display="flex">
       <Timestamp mr={2} timestamp={timestamp} theme={TimeTimestampTheme} />
-      <Body mr={3} lineHeight="40px">
-        ~
-      </Body>
       <TextInput
         mt={2}
         flex={1}

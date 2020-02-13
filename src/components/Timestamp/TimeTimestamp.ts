@@ -5,7 +5,9 @@ import { TimestampContainer } from './elements';
 export const TimeTimestampContainer = styled(TimestampContainer)`
   font-family: 'Inconsolata', monospace;
 `;
-TimeTimestampContainer.defaultProps = {};
+TimeTimestampContainer.defaultProps = {
+  fontSize: 0,
+};
 
 export const timeTimestampToCopy = (timestamp: Date) => {
   return moment(timestamp).format('HH:mm:ss');

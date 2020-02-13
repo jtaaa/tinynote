@@ -2,7 +2,6 @@ import React from 'react';
 import Box from 'components/Box';
 import TextInput from 'components/TextInput';
 import Timestamp, { TimeTimestampTheme } from 'components/Timestamp';
-import Body from 'components/text/Body';
 
 type NoteLineProps = {
   timestamp: Date;

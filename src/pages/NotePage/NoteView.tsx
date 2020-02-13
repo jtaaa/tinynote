@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from 'components/Box';
 import Button from 'components/buttons/Button';
@@ -99,7 +99,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
             previousCreatedOn = line.createdOn;
 
             return (
-              <>
+              <Fragment key={line.id}>
                 {addDateStamp && (
                   <Timestamp
                     timestamp={tempNote.createdOn}
@@ -107,13 +107,12 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
                   />
                 )}
                 <NoteLine
-                  key={line.id}
                   timestamp={line.modifiedOn}
                   text={line.text}
                   onChange={getBodySetter(setTempNote, index)}
                   placeholder={existingLinePlaceholder}
                 />
-              </>
+              </Fragment>
             );
           })
         ) : (
@@ -125,17 +124,20 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
             placeholder={newNoteBodyPlaceholder}
           />
         )}
-        <NoteLine
-          timestamp={new Date()}
-          text={newLine}
-          placeholder={
-            isExistingNote
-              ? existingNoteBodyPlaceholder
-              : newNoteBodyPlaceholder
-          }
-          onChange={getNewLineSetter(setNewLine)}
-          onBlur={onBlur}
-        />
+        <Box ref={ref => ref?.scrollIntoView()}>
+          <Timestamp timestamp={new Date()} theme={DateTimestampTheme} />
+          <NoteLine
+            timestamp={new Date()}
+            text={newLine}
+            placeholder={
+              isExistingNote
+                ? existingNoteBodyPlaceholder
+                : newNoteBodyPlaceholder
+            }
+            onChange={getNewLineSetter(setNewLine)}
+            onBlur={onBlur}
+          />
+        </Box>
       </Body>
       <Box mt={4}>
         <Centered flexDirection={['column', 'row']} alignItems="center">

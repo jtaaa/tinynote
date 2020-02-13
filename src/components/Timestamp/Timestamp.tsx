@@ -19,6 +19,11 @@ import {
   TimeTimestampTheme,
   timeTimestampToCopy,
 } from './TimeTimestamp';
+import {
+  DateTimestampTheme,
+  DateTimestampContainer,
+  dateTimestampToCopy,
+} from './DateTimestamp';
 
 // That any is fine.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,6 +48,10 @@ const Timestamp = ({
     case TimeTimestampTheme:
       Container = TimeTimestampContainer;
       timestampCopy = timeTimestampToCopy(timestamp);
+      break;
+    case DateTimestampTheme:
+      Container = DateTimestampContainer;
+      timestampCopy = dateTimestampToCopy(timestamp);
       break;
     default:
       break;

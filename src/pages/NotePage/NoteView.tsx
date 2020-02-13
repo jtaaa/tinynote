@@ -4,7 +4,10 @@ import Box from 'components/Box';
 import Button from 'components/buttons/Button';
 import Centered from 'components/Centered';
 import TextInput from 'components/TextInput';
-import Timestamp, { FancyTimestampTheme } from 'components/Timestamp';
+import Timestamp, {
+  FancyTimestampTheme,
+  DateTimestampTheme,
+} from 'components/Timestamp';
 import Trafalgar from 'components/text/Trafalgar';
 import Body from 'components/text/Body';
 import { useNote } from 'modules/notes';
@@ -72,6 +75,10 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
     },
   );
 
+  let previousCreatedOn = Array.isArray(tempNote.body)
+    ? tempNote.body[0].createdOn
+    : tempNote.createdOn;
+
   return (
     <Box display="flex" flexDirection="column" height="100%" p={3}>
       <Trafalgar textAlign="center">
@@ -84,15 +91,31 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
       </Trafalgar>
       <Body mt={2} flex={1}>
         {Array.isArray(tempNote.body) ? (
-          tempNote.body.map((line, index) => (
-            <NoteLine
-              key={line.id}
-              timestamp={line.modifiedOn}
-              text={line.text}
-              onChange={getBodySetter(setTempNote, index)}
-              placeholder={existingLinePlaceholder}
-            />
-          ))
+          tempNote.body.map((line, index) => {
+            const addDateStamp =
+              index === 0 ||
+              previousCreatedOn.getDate() !== line.createdOn.getDate();
+
+            previousCreatedOn = line.createdOn;
+
+            return (
+              <>
+                {addDateStamp && (
+                  <Timestamp
+                    timestamp={tempNote.createdOn}
+                    theme={DateTimestampTheme}
+                  />
+                )}
+                <NoteLine
+                  key={line.id}
+                  timestamp={line.modifiedOn}
+                  text={line.text}
+                  onChange={getBodySetter(setTempNote, index)}
+                  placeholder={existingLinePlaceholder}
+                />
+              </>
+            );
+          })
         ) : (
           <TextInput
             mt={2}

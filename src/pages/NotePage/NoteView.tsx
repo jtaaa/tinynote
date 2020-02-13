@@ -124,7 +124,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
             placeholder={newNoteBodyPlaceholder}
           />
         )}
-        <Box ref={ref => ref?.scrollIntoView()}>
+        <Box ref={ref => ref?.scrollIntoView()} mb={7}>
           <Timestamp timestamp={new Date()} theme={DateTimestampTheme} />
           <NoteLine
             timestamp={new Date()}

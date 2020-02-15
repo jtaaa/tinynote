@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from 'components/Box';
 import Button from 'components/buttons/Button';
@@ -30,27 +30,19 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
     setNewLine,
     saveNewLine,
   } = useNote(noteId);
+  const newLineRef = useRef<HTMLDivElement>(null);
 
   const modifiedOnLabel = t('modifiedOn', { defaultValue: 'modified on' });
   const createdOnLabel = t('createdOn', { defaultValue: 'created on' });
-
-  const onDelete = async () => {
-    removeNote();
-    history.push('/');
-  };
-
   const newNoteTitlePlaceholder = t('newNote', {
     defaultValue: 'New note',
   });
-
   const newNoteBodyPlaceholder = t('startNoteHere', {
     defaultValue: 'Start your epic note here!',
   });
-
   const existingNoteBodyPlaceholder = t('continueNoteHere', {
     defaultValue: 'Continue your note here.',
   });
-
   const existingLinePlaceholder = t('startNoteHere', {
     defaultValue: 'Edit this line or leave empty to remove.',
   });
@@ -58,22 +50,25 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
   const isExistingNote =
     Array.isArray(tempNote.body) && tempNote.body.length !== 0;
 
-  const onBlur = async () => {
+  const addNewLine = async () => {
     saveNewLine();
     setNewLine('');
   };
 
-  useKeyListener(
-    'ENTER_KEY',
-    async () => {
-      console.log('Enter key pressed');
-      saveNewLine();
-      setNewLine('');
-    },
-    {
-      preventDefault: true,
-    },
-  );
+  const onDelete = async () => {
+    removeNote();
+    history.push('/');
+  };
+
+  useKeyListener('ENTER_KEY', addNewLine, {
+    preventDefault: true,
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      newLineRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }, [newLineRef]);
 
   let previousCreatedOn = Array.isArray(tempNote.body)
     ? tempNote.body[0].createdOn
@@ -124,7 +119,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
             placeholder={newNoteBodyPlaceholder}
           />
         )}
-        <Box ref={ref => ref?.scrollIntoView()} mb={7}>
+        <Box ref={newLineRef} mb={7}>
           {previousCreatedOn.getDate() !== new Date().getDate() && (
             <Timestamp timestamp={new Date()} theme={DateTimestampTheme} />
           )}
@@ -137,7 +132,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
                 : newNoteBodyPlaceholder
             }
             onChange={getNewLineSetter(setNewLine)}
-            onBlur={onBlur}
+            onBlur={addNewLine}
           />
         </Box>
       </Body>

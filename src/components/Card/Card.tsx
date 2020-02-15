@@ -1,19 +1,13 @@
 import styled from 'styled-components/macro';
 import Box from 'components/Box';
-import { theme } from 'utils/theme';
 
-const Card = styled(Box)`
-  transition: background-color ease-in 100ms;
-
-  &:hover {
-    background-color: ${theme.colors.grey};
-  }
-`;
+const Card = styled(Box)``;
 
 Card.defaultProps = {
   borderRadius: 2,
   boxShadow: 'light',
-  border: `1px solid ${theme.colors.white}`,
+  border: `1px solid`,
+  borderColor: 'font',
   p: 3,
 };
 

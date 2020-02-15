@@ -12,8 +12,8 @@ const Page: React.FC<PageProps> = ({ children, ...headerProps }) => {
       display="flex"
       flexDirection="column"
       alignItems="stretch"
-      bg="black"
-      color="white"
+      bg="base"
+      color="font"
     >
       <Header {...headerProps} />
       <Box flex="1" overflow="auto">

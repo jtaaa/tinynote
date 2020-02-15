@@ -20,6 +20,10 @@ const colors = {
   'secondary/light': '#f1f1f1',
   'secondary/mid': '#e9e9e9',
   grey: '#272628',
+
+  // new theme stuff
+  base: '#fef1e1',
+  font: '#000e1a',
 };
 
 //--> Space

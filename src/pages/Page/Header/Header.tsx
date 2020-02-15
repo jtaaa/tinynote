@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Box from 'components/Box';
 import BackIcon from 'components/icons/BackIcon';
 import UnstyledButton from 'components/buttons/UnstyledButton';
+import UnstyledLink from 'components/UnstyledLink';
 import { HeaderContainer } from './elements';
 import { Action } from './types';
 
@@ -23,9 +23,9 @@ const Header: React.FC<HeaderProps> = ({ back, actions = [], extension }) => {
       >
         <Box>
           {back && (
-            <Link to={back}>
+            <UnstyledLink to={back}>
               <BackIcon />
-            </Link>
+            </UnstyledLink>
           )}
         </Box>
         <Box>

@@ -80,7 +80,7 @@ const NoteView: React.FC<NoteViewProps> = ({ noteId }) => {
     : tempNote.createdOn;
 
   return (
-    <Box display="flex" flexDirection="column" height="100%" p={3}>
+    <Box display="flex" flexDirection="column" p={3}>
       <Trafalgar textAlign="center">
         <TextInput
           textAlign="center"

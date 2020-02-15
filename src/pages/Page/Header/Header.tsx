@@ -10,10 +10,16 @@ export type HeaderProps = {
   back?: string;
   actions?: Action[];
   extension?: React.ReactNode;
+  lifted?: boolean;
 };
-const Header: React.FC<HeaderProps> = ({ back, actions = [], extension }) => {
+const Header: React.FC<HeaderProps> = ({
+  back,
+  actions = [],
+  extension,
+  lifted,
+}) => {
   return (
-    <HeaderContainer>
+    <HeaderContainer variant={lifted ? 'lifted' : undefined}>
       <Box
         height={64}
         p={3}

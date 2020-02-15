@@ -18,7 +18,7 @@ import {
 
 export type BoxProps = StyledComponentProps<
   'div',
-  any,
+  React.HTMLProps<HTMLDivElement>,
   SpaceProps &
     LayoutProps &
     ColorProps &

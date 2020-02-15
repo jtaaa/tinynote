@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from 'components/Box';
 import Header, { HeaderProps } from './Header';
 
@@ -6,6 +6,12 @@ type PageProps = HeaderProps & {
   children: React.ReactNode;
 };
 const Page: React.FC<PageProps> = ({ children, ...headerProps }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const onBodyScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    setIsScrolled(e.currentTarget.scrollTop !== 0);
+  };
+
   return (
     <Box
       height="100%"
@@ -15,8 +21,8 @@ const Page: React.FC<PageProps> = ({ children, ...headerProps }) => {
       bg="base"
       color="font"
     >
-      <Header {...headerProps} />
-      <Box flex="1" overflow="auto">
+      <Header {...headerProps} lifted={isScrolled} />
+      <Box flex="1" overflow="auto" onScroll={onBodyScroll}>
         {children}
       </Box>
     </Box>

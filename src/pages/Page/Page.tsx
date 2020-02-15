@@ -7,9 +7,18 @@ type PageProps = HeaderProps & {
 };
 const Page: React.FC<PageProps> = ({ children, ...headerProps }) => {
   return (
-    <Box minHeight="100%" bg="black" color="white">
+    <Box
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      alignItems="stretch"
+      bg="black"
+      color="white"
+    >
       <Header {...headerProps} />
-      {children}
+      <Box flex="1" overflow="auto">
+        {children}
+      </Box>
     </Box>
   );
 };

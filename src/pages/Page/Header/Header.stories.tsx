@@ -21,3 +21,7 @@ const PlusAction = {
 export const WithPlusAction = () => {
   return <Header back="/" actions={[PlusAction]} />;
 };
+
+export const WithTitle = () => {
+  return <Header back="/" actions={[PlusAction]} title="with title" />;
+};

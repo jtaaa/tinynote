@@ -24,6 +24,7 @@ const colors = {
   // new theme stuff
   base: '#fef1e1',
   font: '#000e1a',
+  fontLight: '#33404c',
 };
 
 //--> Space

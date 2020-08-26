@@ -14,6 +14,8 @@ import {
   ShadowProps,
   flexbox,
   FlexboxProps,
+  position,
+  PositionProps,
 } from 'styled-system';
 
 export type BoxProps = StyledComponentProps<
@@ -25,7 +27,8 @@ export type BoxProps = StyledComponentProps<
     TypographyProps &
     BorderProps &
     ShadowProps &
-    FlexboxProps,
+    FlexboxProps &
+    PositionProps,
   never
 >;
 const Box = styled.div<BoxProps>`
@@ -36,6 +39,7 @@ const Box = styled.div<BoxProps>`
   ${border}
   ${shadow}
   ${flexbox}
+  ${position}
 `;
 
 export default Box;

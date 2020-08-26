@@ -22,7 +22,13 @@ const Page: React.FC<PageProps> = ({ children, ...headerProps }) => {
       color="font"
     >
       <Header {...headerProps} lifted={isScrolled} />
-      <Box flex="1" overflow="auto" onScroll={onBodyScroll}>
+      <Box
+        flex="1"
+        overflow="auto"
+        onScroll={onBodyScroll}
+        position="relative"
+        display="flex"
+      >
         {children}
       </Box>
     </Box>
